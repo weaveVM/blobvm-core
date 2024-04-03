@@ -1,0 +1,38 @@
+{
+  "name": "blobvm-core",
+  "version": "0.0.1",
+  "description": "blobVM core logic and CLI",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/weavevm/blobvm-core.git"
+  },
+  "bin": {
+    "blobvm": "cli/cli.js"
+  },
+  "keywords": [
+    "blob",
+    "eip4844",
+    "Arweave",
+    "L2",
+    "computing"
+  ],
+  "author": "charmful0x",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/weavevm/blobvm-core/issues"
+  },
+  "homepage": "https://github.com/weavevm/blobvm-core#readme",
+  "dependencies": {
+    "@ethereumjs/common": "^4.3.0",
+    "@ethereumjs/tx": "^5.1.0",
+    "axios": "^1.6.8",
+    "c-kzg": "^2.1.2",
+    "commander": "^12.0.0",
+    "dotenv": "^16.4.5",
+    "ethers": "^6.11.1"
+  }
+}

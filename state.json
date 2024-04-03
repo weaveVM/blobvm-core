@@ -1,0 +1,67 @@
+{
+  "tld": ".aikek",
+  "token_symbol": "AIKEK",
+  "token_decimals": 1e18,
+  "token_contract": "0x8dCE83ECa4af45dbe618Da1779F9Aaca43201084",
+  "treasury_address": "0xF1f8D842282f71F4d5BCca8B2722f041F24cE109",
+  "admin_address": "0x197f818c1313dc58b32d88078ecdfb40ea822614",
+  "sig_message": "aikek-ns::",
+  "domains": [    {
+      "owner": "0x825a524f40f91b75a863619fbc3351d4f7f889bb",
+      "domain": "123456789000000",
+      "is_primary": false
+    },
+    {
+      "owner": "0x825a524f40f91b75a863619fbc3351d4f7f889bb",
+      "domain": "123456789222222",
+      "is_primary": true
+    },
+    {
+      "owner": "0x2a01d339d3ab41b2d8b145b5df8586032d9961c6",
+      "domain": "0xancientgoblin",
+      "is_primary": false
+    },
+    {
+      "owner": "0x2a01d339d3ab41b2d8b145b5df8586032d9961c6",
+      "domain": "0x0000000000000",
+      "is_primary": true
+    },
+{
+  "owner": "0x2a01d339d3ab41b2d8b145b5df8586032d9961c6",
+  "domain": "vvsotnikov",
+  "is_primary": false,
+  "is_tradeable": true,
+  "ask_price": 1,
+  "order_id": "4734eb83-d8cf-e23e-7886-724d5849da8b"
+}
+
+  ],
+  "evm_molecule_endpoint": "http://evm.molecule.sh",
+  "ever_molecule_endpoint": "https://molecules-exm.herokuapp.com/ever/everpay/tx",
+  "counter": 0,
+  "pricing": {
+    "l2": 1,
+    "l3": 58000,
+    "l4": 35000,
+    "l5": 21000,
+    "l6": 14500,
+    "l7": 10000,
+    "l8": 3000,
+    "l9": 3000,
+    "l10": 3000,
+    "l11": 3000,
+    "l12": 3000,
+    "l13": 3000,
+    "l14": 3000,
+    "l15": 3000
+  },
+  "signatures": [],
+  "payments": [],
+  "publicFunctions": {
+    "mint": ["caller", "sig", "domain", "tx_fee"],
+    "setPrimaryDomain": ["caller", "sig", "domain"],
+    "transfer": ["caller", "sig", "domain", "target"],
+    "resolve": ["domain", "address"],
+    "pauseUnpauseContract": ["sig"]
+  }
+}
