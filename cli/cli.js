@@ -8,7 +8,7 @@ const { postBlobOnchain } = require("./commands");
 
 program
   .command("deploy")
-  .requiredOption("-p, --privateKey <privateKey>", "private key")
+  .requiredOption("-pk, --privateKey <privateKey>", "private key")
   .requiredOption("-src, --src <src>", "upload file path")
   .requiredOption("-state, --state <state>", "upload file path")
   .option("-r, --rpc <rpc>", "provider RPC url")

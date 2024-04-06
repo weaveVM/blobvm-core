@@ -32,11 +32,13 @@ const postBlobOnchain = async (
   const initState = fs.readFileSync(filePath2, "utf8");
 
   const scCharCodes = sc.split("").map((char) => char.charCodeAt(0));
-
-  const contractData = JSON.stringify({ sc: scCharCodes, state: initState });
+  const initStateCharCodes = initState.split("").map((char) => char.charCodeAt(0));
+  const contractData = JSON.stringify({type: 1, sc: scCharCodes, state: initStateCharCodes});
 
   const txid = await send(privateKey, Buffer.from(contractData));
   console.log(`contract address: ${txid}`);
+  // TODO: add a function that call the sequencer
+  // and add the contract data to the DB
 };
 
 async function send(
