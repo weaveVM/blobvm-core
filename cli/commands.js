@@ -41,6 +41,26 @@ const postBlobOnchain = async (
   // and add the contract data to the DB
 };
 
+const postInteractionBlobOnchain = async (
+  privateKey,
+  interaction,
+  contract,
+  rpc = RPC_URL,
+  toAddress = SEQ_ADDR,
+  data = "0x",
+  value = 0n,
+  count = DEFAULT_COUNT,
+) => {
+
+  const inputs = interaction.split("").map((char) => char.charCodeAt(0));
+  const txData = JSON.stringify({type: 2, contract: contract, inputs: inputs});
+
+  const txid = await send(privateKey, Buffer.from(txData));
+  console.log(`transaction id: ${txid}`);
+  // TODO: add a function that call the sequencer
+  // and add the contract data to the DB
+};
+
 async function send(
   privateKey,
   content,
@@ -113,4 +133,6 @@ async function send(
     return null;
   }
 }
-module.exports.postBlobOnchain = postBlobOnchain;
+
+module.exports = {postBlobOnchain, postInteractionBlobOnchain}
+
