@@ -8,6 +8,8 @@ const {
   RPC_URL,
 } = require("./constants");
 
+const { sendTxToSeq } = require("./sequencer.js");
+
 async function isContract(rpc, to) {
   const provider = new ethers.JsonRpcProvider(rpc);
   try {
@@ -18,7 +20,7 @@ async function isContract(rpc, to) {
   }
 }
 
-const postBlobOnchain = async (
+const postContractBlobOnchain = async (
   privateKey,
   filePath1,
   filePath2,
@@ -36,9 +38,15 @@ const postBlobOnchain = async (
   const contractData = JSON.stringify({type: 1, sc: scCharCodes, state: initStateCharCodes});
 
   const txid = await send(privateKey, Buffer.from(contractData));
-  console.log(`contract address: ${txid}`);
-  // TODO: add a function that call the sequencer
-  // and add the contract data to the DB
+  const seqReq = await sendTxToSeq(txid, "contract");
+
+  if(seqReq) {
+    console.log(`contract address: ${txid}`);
+    return;
+  }
+
+  console.log(`error sending tx to sequencer: ${txid}`);
+  return;
 };
 
 const postInteractionBlobOnchain = async (
@@ -56,9 +64,14 @@ const postInteractionBlobOnchain = async (
   const txData = JSON.stringify({type: 2, contract: contract, inputs: inputs});
 
   const txid = await send(privateKey, Buffer.from(txData));
-  console.log(`transaction id: ${txid}`);
-  // TODO: add a function that call the sequencer
-  // and add the contract data to the DB
+  const seqReq = await sendTxToSeq(txid, "transaction");
+  if(seqReq) {
+    console.log(`transaction id: ${txid}`);
+    return;
+  }
+
+  console.log(`error sending tx to sequencer: ${txid}`);
+  return;
 };
 
 async function send(
@@ -134,5 +147,5 @@ async function send(
   }
 }
 
-module.exports = {postBlobOnchain, postInteractionBlobOnchain}
+module.exports = {postContractBlobOnchain, postInteractionBlobOnchain}
 
