@@ -137,6 +137,7 @@ tx_gas = l1_gas_fees + (262604 * winston_byte_price * 1e-12 * ar_usd_price / eth
 
 
 ## blobVM Context
+
 The blobVM context is injected by the sequencer during the lazy evaluation of a transaction. It provides a suite of useful APIs that are accessible during execution and the retroactive lazy evaluation:
 
 | method  | description | status |
@@ -166,7 +167,8 @@ export async function handle(state, action) {
   "users": []
 }
 ```
-
+## blobVM Sequencer
+The blobVM sequencer source code can be found [here](https://github.com/weavevm/blobvm-sequencer)
 
 ## License
 This repository is licensed under the [MIT License](./LICENSE)
