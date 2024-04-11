@@ -72,7 +72,7 @@ Transactions data structure should be as follow:
 
 **Data encoding**
 
-The properties `sc`, `state`, and `inputs` are initialized as listed below. They are then encoded according to the function encodeBvmData()
+The properties `sc`, `state`, and `inputs` are initialized as listed below. They are then encoded according to the function `encodeBvmData()`
 
 - `sc` : UTF-8 representation of the source code
 - `state` : initial state as stringified JSON 
@@ -134,6 +134,38 @@ tx_gas = l1_gas_fees + (262604 * winston_byte_price * 1e-12 * ar_usd_price / eth
 - `winston_byte_price`: The cost price per byte on Arweave. This is dynamic and can be checked at `https://arweave.net/price/262604`.
 - `1e-12 * ar_usd_price`: The conversion of `winston_byte_price` from winstons to AR and then to USD.
 - `bvm_multiplier` (>= 1): The total Arweave cost, converted to ETH, is then multiplied by the sequencer premium multiplier.
+
+
+## blobVM Context
+The blobVM context is injected by the sequencer during the lazy evaluation of a transaction. It provides a suite of useful APIs that are accessible during execution and the retroactive lazy evaluation:
+
+| method  | description | status |
+| :-------------: |:-------------:|:-------------:|
+| `blobvm.msg.sender` | return the transaction sender (EOA)     |  supported       |
+| `blobvm.tx.id`      | return the call's transaction id     |  unsupported       |
+
+## Examples
+
+#### Contract source code
+```js
+export async function handle(state, action) {
+  const input = action.input;
+
+  if (input.function === "increment") {
+    state.counter += 1;
+    state.users.push(blobvm.msg.sender);
+    return { state };
+  }
+}
+```
+
+#### Contract initial state
+```json
+{
+  "counter": 0,
+  "users": []
+}
+```
 
 
 ## License
