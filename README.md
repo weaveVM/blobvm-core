@@ -38,6 +38,12 @@ blobvm write --pk YOUR_WALLET_PK --contract CONTRACT_ADDRESS --input INPUT_JSON_
 ```
 
 
+### blobVM Terminology:
+
+- **bvm**: Short for blobVM.
+- **smart blob**: A smart contract deployed on blobVM.
+
+
 ## blobVM Architecture
 
 ### Protocol design
@@ -169,6 +175,24 @@ export async function handle(state, action) {
 ```
 ## blobVM Sequencer
 The blobVM sequencer source code can be found [here](https://github.com/weavevm/blobvm-sequencer)
+
+## MEM & blobVM
+
+
+### Differences from MEM:
+- **Caller Authentication**: Unlike MEM, blobVM includes native caller authentication under `blobvm.msg.sender`.
+- **Size Limits**: The combined size of the contract and state is limited to 128KB.
+- **Transaction Bundling**: No bundled (batched) transactions are supported by default.
+- **TPS**: Lower TPS compared to MEM.
+- **Data Availability**: Provides a ~14-day data availability (DA) on EVM networks (WVM/anyEVM).
+- **Format**: Different transaction and contract data formats compared to MEM, particularly at the data structure level.
+
+### Similarities to MEM:
+- **Contract Syntax**: The same contract syntax is used; any MEM function is backward compatible with a blobVM contract.
+- **Data Archiving**: Both protocols post data to Arweave to ensure a sovereignly archived state.
+- **Evaluation Method**: Both utilize lazy evaluation for state transitions.
+- **Contract Features**: Supports stateful contracts, REST APIs, and utilizes an optimistic cache.
+
 
 ## License
 This repository is licensed under the [MIT License](./LICENSE)
