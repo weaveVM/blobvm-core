@@ -5,7 +5,7 @@
 </p>
 
 ## About
-BlobVM is a computing protocol that implements the [MEM compute protocol](https://docs.mem.tech) on top of EVM networks supporting [EIP-4844](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-4844.md). It leverages blobs for short-lived data availability (DA), [3EM](https://github.com/three-em/3em/) for execution, and [Arweave](https://arweave.org) for permanent data archiving.
+BlobVM is a computing protocol that implements the [ERC-7689](https://ethereum-magicians.org/t/erc-7689-smart-blobs/19672). This implementation of the ERC follow its specifications for the State Computing Machine, and the Sequencer. For data computation, a [MEM node](https://docs.mem.tech) is used.
 
 ## Build locally
 
