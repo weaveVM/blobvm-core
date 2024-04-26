@@ -149,7 +149,7 @@ The blobVM context is injected by the sequencer during the lazy evaluation of a 
 | method  | description | status |
 | :-------------: |:-------------:|:-------------:|
 | `blobvm.msg.sender` | return the transaction sender (EOA)     |  supported       |
-| `blobvm.tx.id`      | return the call's transaction id     |  unsupported       |
+| `blobvm.tx.id`      | return the call's transaction id     |  supported       |
 
 ## Examples
 
